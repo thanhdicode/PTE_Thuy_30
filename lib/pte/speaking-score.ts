@@ -1,4 +1,5 @@
 import 'server-only'
+import { scorePronunciationFluency } from '@/lib/scoring'
 import type { SpeakingType, SpeakingQuestion } from './types'
 
 export interface SpeakingScoreInput {
@@ -48,58 +49,40 @@ export async function scoreAttempt(
   const durationMinutes = durationMs / 60000
   const wordsPerMinute = durationMinutes > 0 ? Math.round(wordCount / durationMinutes) : 0
 
-  // Score based on question type
-  let contentScore = 0
-  let pronunciationScore = 0
-  let fluencyScore = 0
+  // Content score from transcript (task-specific)
+  let contentScore = getContentScore(type, question, transcript, wordsPerMinute)
 
-  switch (type) {
-    case 'read_aloud':
-      const readAloudScores = scoreReadAloud(question, transcript, wordsPerMinute)
-      contentScore = readAloudScores.content
-      pronunciationScore = readAloudScores.pronunciation
-      fluencyScore = readAloudScores.fluency
-      break
+  // Pronunciation + fluency from real provider when configured,
+  // otherwise fall back to heuristic estimates.
+  let pronunciationScore = 50
+  let fluencyScore = 50
+  let provider = 'none'
+  let providerRaw: any
 
-    case 'repeat_sentence':
-      const repeatScores = scoreRepeatSentence(question, transcript, wordsPerMinute)
-      contentScore = repeatScores.content
-      pronunciationScore = repeatScores.pronunciation
-      fluencyScore = repeatScores.fluency
-      break
+  const refText = question.promptText || question.title || ''
+  try {
+    const providerResult = await scorePronunciationFluency({
+      audioUrl: input.audioUrl,
+      refText,
+      type,
+    })
+    if (providerResult) {
+      pronunciationScore = providerResult.pronunciation || pronunciationScore
+      fluencyScore = providerResult.fluency || fluencyScore
+      if (providerResult.content && providerResult.content > contentScore) {
+        contentScore = providerResult.content
+      }
+      provider = providerResult.provider
+      providerRaw = providerResult.raw
+    }
+  } catch (e) {
+    console.error('[speaking-score] pronunciation provider failed, using heuristic fallback', e)
+  }
 
-    case 'describe_image':
-      const describeScores = scoreDescribeImage(transcript, wordsPerMinute)
-      contentScore = describeScores.content
-      pronunciationScore = describeScores.pronunciation
-      fluencyScore = describeScores.fluency
-      break
-
-    case 'retell_lecture':
-      const retellScores = scoreRetellLecture(transcript, wordsPerMinute)
-      contentScore = retellScores.content
-      pronunciationScore = retellScores.pronunciation
-      fluencyScore = retellScores.fluency
-      break
-
-    case 'answer_short_question':
-      contentScore = transcript.length > 3 ? 90 : 30
-      pronunciationScore = 70
-      fluencyScore = 70
-      break
-
-    case 'summarize_group_discussion':
-    case 'respond_to_a_situation':
-      const situationScores = scoreDescribeImage(transcript, wordsPerMinute)
-      contentScore = situationScores.content
-      pronunciationScore = situationScores.pronunciation
-      fluencyScore = situationScores.fluency
-      break
-
-    default:
-      contentScore = 50
-      pronunciationScore = 50
-      fluencyScore = 50
+  if (provider === 'none') {
+    const fallback = getFallbackPronunciationFluency(type, transcript, wordsPerMinute)
+    pronunciationScore = fallback.pronunciation
+    fluencyScore = fallback.fluency
   }
 
   const total = Math.round((contentScore + pronunciationScore + fluencyScore) / 3)
@@ -115,7 +98,69 @@ export async function scoreAttempt(
       wordsPerMinute,
       fillerRate: calculateFillerRate(transcript),
       pauseCount: 0,
+      provider,
+      providerRaw,
     },
+  }
+}
+
+function getContentScore(
+  type: SpeakingType,
+  question: SpeakingQuestion,
+  transcript: string,
+  wordsPerMinute: number
+): number {
+  switch (type) {
+    case 'read_aloud':
+      return scoreReadAloud(question, transcript, wordsPerMinute).content
+    case 'repeat_sentence':
+      return scoreRepeatSentence(question, transcript, wordsPerMinute).content
+    case 'describe_image':
+      return scoreDescribeImage(transcript, wordsPerMinute).content
+    case 'retell_lecture':
+      return scoreRetellLecture(transcript, wordsPerMinute).content
+    case 'answer_short_question':
+      return transcript.length > 3 ? 90 : 30
+    case 'summarize_group_discussion':
+    case 'respond_to_a_situation':
+      return scoreDescribeImage(transcript, wordsPerMinute).content
+    default:
+      return 50
+  }
+}
+
+function getFallbackPronunciationFluency(
+  type: SpeakingType,
+  transcript: string,
+  wordsPerMinute: number
+): { pronunciation: number; fluency: number } {
+  const fallbackQuestion = {
+    id: 'fallback',
+    type,
+    title: transcript,
+    promptText: transcript,
+  } as SpeakingQuestion
+
+  switch (type) {
+    case 'read_aloud': {
+      const s = scoreReadAloud(fallbackQuestion, transcript, wordsPerMinute)
+      return { pronunciation: s.pronunciation, fluency: s.fluency }
+    }
+    case 'repeat_sentence': {
+      const s = scoreRepeatSentence(fallbackQuestion, transcript, wordsPerMinute)
+      return { pronunciation: s.pronunciation, fluency: s.fluency }
+    }
+    case 'describe_image':
+    case 'retell_lecture':
+    case 'summarize_group_discussion':
+    case 'respond_to_a_situation': {
+      const s = scoreDescribeImage(transcript, wordsPerMinute)
+      return { pronunciation: s.pronunciation, fluency: s.fluency }
+    }
+    case 'answer_short_question':
+      return { pronunciation: 70, fluency: 70 }
+    default:
+      return { pronunciation: 50, fluency: 50 }
   }
 }
 
