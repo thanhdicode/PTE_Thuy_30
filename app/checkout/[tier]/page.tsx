@@ -1,31 +1,34 @@
 'use client'
 
-import { use, useState } from 'react'
-import { useRouter } from 'next/navigation'
+import { useParams } from 'next/navigation'
+import { useState } from 'react'
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from '@/components/ui/card'
 import { Badge } from '@/components/ui/badge'
 import { Check, CreditCard, Loader2 } from 'lucide-react'
-import { TIER_PRICING, TIER_FEATURES_DISPLAY, SubscriptionTier } from '@/lib/subscription/tiers'
+import {
+  SubscriptionTier,
+  TIER_FEATURES_DISPLAY,
+  TIER_PRICING,
+} from '@/lib/subscription/tiers'
+import {
+  GATEWAY_LABELS,
+  SUPPORTED_GATEWAYS,
+  type PaymentGateway,
+  isPaymentConfigured,
+} from '@/lib/payment/config'
+import { formatVnd } from '@/lib/payment/utils'
 
-interface CheckoutPageProps {
-  params: Promise<{
-    tier: string
-  }>
-}
-
-export default async function CheckoutPage({
-  params,
-}: {
-  params: { tier: string };
-}) {
-  const { tier: tierParam } = params
-  const [isLoading, setIsLoading] = useState(false)
-  const [selectedProvider, setSelectedProvider] = useState<string | null>(null)
+export default function CheckoutPage() {
+  const params = useParams<{ tier: string }>()
+  const tierParam = params?.tier ?? ''
   const tier = tierParam as SubscriptionTier
 
-  if (!['pro', 'premium'].includes(tier)) {
+  const [isLoading, setIsLoading] = useState(false)
+  const [selectedProvider, setSelectedProvider] = useState<PaymentGateway | null>(null)
+
+  if (!['pro', 'premium'].includes(tierParam)) {
     return (
       <div className="min-h-screen flex items-center justify-center">
         <div className="text-center">
@@ -42,39 +45,28 @@ export default async function CheckoutPage({
   const pricing = TIER_PRICING[tier]
   const features = TIER_FEATURES_DISPLAY[tier]
 
-  const handleCheckout = async (provider: 'stripe' | 'polar') => {
+  const handleCheckout = async () => {
+    if (!selectedProvider) return
     setIsLoading(true)
-    setSelectedProvider(provider)
 
     try {
-      if (provider === 'polar') {
-        // Call Polar.sh checkout API
-        const response = await fetch('/api/checkout/polar', {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-          },
-          body: JSON.stringify({ tier }),
-        })
+      const response = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ tier: tierParam, gateway: selectedProvider }),
+      })
 
-        if (!response.ok) {
-          const error = await response.json()
-          throw new Error(error.error || 'Failed to create checkout session')
-        }
-
-        const { url } = await response.json()
-        window.location.href = url // Redirect to Polar.sh checkout
-      } else {
-        // TODO: Implement Stripe checkout
-        alert('Stripe checkout not yet implemented. Please use Polar.sh for now.')
-        setIsLoading(false)
-        setSelectedProvider(null)
+      if (!response.ok) {
+        const error = await response.json()
+        throw new Error(error.error || 'Failed to create checkout session')
       }
+
+      const { paymentUrl } = await response.json()
+      window.location.href = paymentUrl
     } catch (error) {
       console.error('Checkout error:', error)
-      alert('Failed to start checkout. Please try again.')
+      alert(error instanceof Error ? error.message : 'Failed to start checkout.')
       setIsLoading(false)
-      setSelectedProvider(null)
     }
   }
 
@@ -82,41 +74,46 @@ export default async function CheckoutPage({
     <div className="min-h-screen bg-gradient-to-b from-background to-muted/20 py-16">
       <div className="container mx-auto px-4">
         <div className="max-w-4xl mx-auto">
-          {/* Header */}
           <div className="text-center mb-8">
             <Badge className="mb-4" variant="outline">
               Checkout
             </Badge>
             <h1 className="text-3xl font-bold mb-2">
-              Complete Your {tier.charAt(0).toUpperCase() + tier.slice(1)} Subscription
+              Hoàn tất đăng ký gói {tier.charAt(0).toUpperCase() + tier.slice(1)}
             </h1>
             <p className="text-muted-foreground">
-              Choose your preferred payment method below
+              Chọn cổng thanh toán phù hợp bên dưới
             </p>
           </div>
 
           <div className="grid md:grid-cols-2 gap-8">
-            {/* Plan Summary */}
             <Card>
               <CardHeader>
                 <CardTitle className="flex items-center gap-2">
-                  <div className={`w-3 h-3 rounded-full ${
-                    tier === 'pro' ? 'bg-blue-500' : 'bg-purple-500'
-                  }`} />
-                  {tier.charAt(0).toUpperCase() + tier.slice(1)} Plan
+                  <div
+                    className={`w-3 h-3 rounded-full ${
+                      tier === 'pro' ? 'bg-blue-500' : 'bg-purple-500'
+                    }`}
+                  />
+                  Gói {tier.charAt(0).toUpperCase() + tier.slice(1)}
                 </CardTitle>
                 <CardDescription>
                   {tier === 'pro'
-                    ? 'Best for serious learners'
-                    : 'Maximum features for peak performance'
-                  }
+                    ? 'Dành cho học viên nghiêm túc'
+                    : 'Trải nghiệm tối đa'}
                 </CardDescription>
               </CardHeader>
               <CardContent>
                 <div className="text-center mb-6">
                   <div className="text-4xl font-bold">
-                    ${pricing.price}
-                    <span className="text-lg text-muted-foreground">/{pricing.period}</span>
+                    {pricing.price === 0 ? (
+                      'Free'
+                    ) : (
+                      <>
+                        {formatVnd(pricing.price)}
+                        <span className="text-lg text-muted-foreground">/{pricing.period === 'month' ? 'tháng' : pricing.period}</span>
+                      </>
+                    )}
                   </div>
                 </div>
 
@@ -131,79 +128,55 @@ export default async function CheckoutPage({
               </CardContent>
             </Card>
 
-            {/* Payment Methods */}
             <div className="space-y-4">
-              <h3 className="text-lg font-semibold mb-4">Choose Payment Method</h3>
+              <h3 className="text-lg font-semibold mb-4">Chọn cổng thanh toán</h3>
 
-              {/* Polar.sh Option */}
-              <Card
-                className={`cursor-pointer transition-all hover:shadow-md ${
-                  selectedProvider === 'polar' ? 'ring-2 ring-primary' : ''
-                }`}
-                onClick={() => !isLoading && setSelectedProvider('polar')}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
-                        <CreditCard className="h-5 w-5 text-white" />
+              {SUPPORTED_GATEWAYS.map((gateway) => {
+                const configured = isPaymentConfigured(gateway)
+                return (
+                  <Card
+                    key={gateway}
+                    className={`cursor-pointer transition-all hover:shadow-md ${
+                      selectedProvider === gateway ? 'ring-2 ring-primary' : ''
+                    } ${!configured ? 'opacity-50' : ''}`}
+                    onClick={() => configured && setSelectedProvider(gateway)}
+                  >
+                    <CardContent className="p-6">
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-3">
+                          <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-purple-600 rounded-lg flex items-center justify-center">
+                            <CreditCard className="h-5 w-5 text-white" />
+                          </div>
+                          <div>
+                            <h4 className="font-semibold">{GATEWAY_LABELS[gateway]}</h4>
+                            <p className="text-sm text-muted-foreground">
+                              {configured
+                                ? gateway === 'vnpay'
+                                  ? 'ATM / Internet Banking / Thẻ quốc tế'
+                                  : 'Sẵn sàng'
+                                : 'Chưa cấu hình'}
+                            </p>
+                          </div>
+                        </div>
+                        <div
+                          className={`w-4 h-4 rounded-full border-2 ${
+                            selectedProvider === gateway
+                              ? 'border-primary bg-primary'
+                              : 'border-muted-foreground'
+                          }`}
+                        >
+                          {selectedProvider === gateway && (
+                            <div className="w-full h-full rounded-full bg-white scale-50" />
+                          )}
+                        </div>
                       </div>
-                      <div>
-                        <h4 className="font-semibold">Polar.sh</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Modern payments infrastructure
-                        </p>
-                      </div>
-                    </div>
-                    <div className={`w-4 h-4 rounded-full border-2 ${
-                      selectedProvider === 'polar'
-                        ? 'border-primary bg-primary'
-                        : 'border-muted-foreground'
-                    }`}>
-                      {selectedProvider === 'polar' && (
-                        <div className="w-full h-full rounded-full bg-white scale-50" />
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
+                    </CardContent>
+                  </Card>
+                )
+              })}
 
-              {/* Stripe Option */}
-              <Card
-                className={`cursor-pointer transition-all hover:shadow-md opacity-50 ${
-                  selectedProvider === 'stripe' ? 'ring-2 ring-primary' : ''
-                }`}
-                onClick={() => !isLoading && setSelectedProvider('stripe')}
-              >
-                <CardContent className="p-6">
-                  <div className="flex items-center justify-between">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 bg-gradient-to-r from-purple-500 to-pink-600 rounded-lg flex items-center justify-center">
-                        <CreditCard className="h-5 w-5 text-white" />
-                      </div>
-                      <div>
-                        <h4 className="font-semibold">Stripe</h4>
-                        <p className="text-sm text-muted-foreground">
-                          Coming soon
-                        </p>
-                      </div>
-                    </div>
-                    <div className={`w-4 h-4 rounded-full border-2 ${
-                      selectedProvider === 'stripe'
-                        ? 'border-primary bg-primary'
-                        : 'border-muted-foreground'
-                    }`}>
-                      {selectedProvider === 'stripe' && (
-                        <div className="w-full h-full rounded-full bg-white scale-50" />
-                      )}
-                    </div>
-                  </div>
-                </CardContent>
-              </Card>
-
-              {/* Checkout Button */}
               <Button
-                onClick={() => selectedProvider && handleCheckout(selectedProvider as 'stripe' | 'polar')}
+                onClick={handleCheckout}
                 disabled={!selectedProvider || isLoading}
                 className="w-full"
                 size="lg"
@@ -211,32 +184,29 @@ export default async function CheckoutPage({
                 {isLoading ? (
                   <>
                     <Loader2 className="mr-2 h-4 w-4 animate-spin" />
-                    Creating checkout...
+                    Đang tạo thanh toán...
                   </>
                 ) : (
-                  `Subscribe with ${selectedProvider === 'polar' ? 'Polar.sh' : 'Stripe'}`
+                  `Thanh toán qua ${selectedProvider ? GATEWAY_LABELS[selectedProvider] : '...'}`
                 )}
               </Button>
 
               <p className="text-xs text-muted-foreground text-center">
-                By subscribing, you agree to our{' '}
+                Bằng việc thanh toán, bạn đồng ý với{' '}
                 <Link href="/legal/terms" className="underline hover:no-underline">
-                  Terms of Service
+                  Điều khoản dịch vụ
                 </Link>{' '}
-                and{' '}
+                và{' '}
                 <Link href="/legal/privacy" className="underline hover:no-underline">
-                  Privacy Policy
+                  Chính sách bảo mật
                 </Link>
               </p>
             </div>
           </div>
 
-          {/* Back to Pricing */}
           <div className="text-center mt-8">
             <Link href="/pricing">
-              <Button variant="outline">
-                ← Back to Pricing
-              </Button>
+              <Button variant="outline">← Quay lại bảng giá</Button>
             </Link>
           </div>
         </div>

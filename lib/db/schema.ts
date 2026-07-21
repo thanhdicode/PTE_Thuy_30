@@ -1063,6 +1063,37 @@ export const aiCreditUsage = pgTable(
   })
 )
 
+export const paymentTransactions = pgTable(
+  'payment_transactions',
+  {
+    id: uuid('id')
+      .primaryKey()
+      .default(sql`gen_random_uuid()`),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    tier: text('tier').notNull(), // 'pro' | 'premium'
+    gateway: text('gateway').notNull(), // 'vnpay' | 'momo' | 'zalopay'
+    amount: integer('amount').notNull(), // VND
+    orderId: text('order_id').notNull().unique(),
+    providerRef: text('provider_ref'),
+    status: text('status').notNull().default('pending'), // 'pending' | 'paid' | 'cancelled' | 'failed'
+    paymentUrl: text('payment_url'),
+    responseCode: text('response_code'),
+    metadata: jsonb('metadata'),
+    paidAt: timestamp('paid_at'),
+    expiresAt: timestamp('expires_at'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  },
+  (table) => ({
+    userIdIdx: index('idx_payment_user_id').on(table.userId),
+    orderIdIdx: index('idx_payment_order_id').on(table.orderId),
+    statusIdx: index('idx_payment_status').on(table.status),
+    gatewayIdx: index('idx_payment_gateway').on(table.gateway),
+  })
+)
+
 // Relations
 // New relations for Speaking system
 export const speakingQuestionsRelations = relations(
@@ -1154,6 +1185,7 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   progress: one(userProgress),
   profile: one(userProfiles),
   subscriptions: many(userSubscriptions),
+  payments: many(paymentTransactions),
   testAttempts: many(testAttempts),
   posts: many(posts),
   comments: many(comments),
@@ -1302,6 +1334,16 @@ export const userSubscriptionsRelations = relations(
   ({ one }) => ({
     user: one(users, {
       fields: [userSubscriptions.userId],
+      references: [users.id],
+    }),
+  })
+)
+
+export const paymentTransactionsRelations = relations(
+  paymentTransactions,
+  ({ one }) => ({
+    user: one(users, {
+      fields: [paymentTransactions.userId],
       references: [users.id],
     }),
   })

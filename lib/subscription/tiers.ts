@@ -265,23 +265,26 @@ export function getRemainingAiCredits(
 }
 
 /**
- * Tier pricing (for display)
+ * Tier pricing in Vietnamese Dong (VND)
  */
 export const TIER_PRICING = {
   [SubscriptionTier.FREE]: {
     price: 0,
+    currency: 'VND',
     period: 'forever',
     displayPrice: 'Free',
   },
   [SubscriptionTier.PRO]: {
-    price: 29,
+    price: 299000,
+    currency: 'VND',
     period: 'month',
-    displayPrice: '$29/month',
+    displayPrice: '299.000đ/tháng',
   },
   [SubscriptionTier.PREMIUM]: {
-    price: 49,
+    price: 499000,
+    currency: 'VND',
     period: 'month',
-    displayPrice: '$49/month',
+    displayPrice: '499.000đ/tháng',
   },
 }
 

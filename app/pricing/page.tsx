@@ -14,6 +14,7 @@ import {
   TIER_FEATURES_DISPLAY,
   TIER_PRICING,
 } from '@/lib/subscription/tiers'
+import { formatVnd } from '@/lib/payment/utils'
 
 export const metadata = {
   title: 'Pricing - PTE Practice Platform',
@@ -94,9 +95,9 @@ export default function PricingPage() {
                       <span>Free</span>
                     ) : (
                       <>
-                        <span className="text-5xl">${pricing.price}</span>
+                        <span className="text-5xl">{formatVnd(pricing.price)}</span>
                         <span className="text-muted-foreground text-lg">
-                          /{pricing.period}
+                          /{pricing.period === 'month' ? 'tháng' : pricing.period}
                         </span>
                       </>
                     )}
