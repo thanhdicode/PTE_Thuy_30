@@ -7,7 +7,7 @@ import { Badge } from '@/components/ui/badge'
 import { Progress } from '@/components/ui/progress'
 import { Mic, Square, Play, RotateCcw, Loader2 } from 'lucide-react'
 
-type Phase = 'idle' | 'recording' | 'recorded' | 'grading'
+type Phase = 'idle' | 'recording' | 'recorded'
 
 const criteria = [
   { label: 'Pronunciation', score: 74 },
@@ -21,6 +21,7 @@ export default function DemoAISpeakingPage() {
   const [phase, setPhase] = useState<Phase>('idle')
   const [seconds, setSeconds] = useState(0)
   const [graded, setGraded] = useState(false)
+  const [isLoading, setIsLoading] = useState(false)
   const [transcript] = useState(
     'I believe studying abroad has many benefits. It helps students improve language skills and become more independent.'
   )
@@ -46,9 +47,9 @@ export default function DemoAISpeakingPage() {
   }
 
   const grade = () => {
-    setPhase('grading')
+    setIsLoading(true)
     setTimeout(() => {
-      setPhase('recorded')
+      setIsLoading(false)
       setGraded(true)
     }, 1500)
   }
@@ -80,7 +81,7 @@ export default function DemoAISpeakingPage() {
           </CardHeader>
           <CardContent className="space-y-6">
             <div className="rounded-lg border bg-muted/30 p-6 leading-relaxed">
-              "Climate change is one of the most pressing issues facing the world today. Governments and individuals must work together to reduce carbon emissions and protect the environment for future generations."
+              “Climate change is one of the most pressing issues facing the world today. Governments and individuals must work together to reduce carbon emissions and protect the environment for future generations.”
             </div>
 
             <div className="flex flex-col items-center gap-4">
@@ -104,17 +105,17 @@ export default function DemoAISpeakingPage() {
               <p className="text-sm text-muted-foreground">
                 {phase === 'idle' && 'Click the mic to start recording'}
                 {phase === 'recording' && `Recording... ${formatTime(seconds)}`}
-                {phase === 'recorded' && `Recorded ${formatTime(seconds)}`}
-                {phase === 'grading' && 'AI is transcribing and grading...'}
+                {phase === 'recorded' && !isLoading && `Recorded ${formatTime(seconds)}`}
+                {phase === 'recorded' && isLoading && 'AI is transcribing and grading...'}
               </p>
               {phase === 'recorded' && !graded && (
-                <Button onClick={grade} disabled={phase === 'grading'} className="gap-2">
-                  {phase === 'grading' ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mic className="w-4 h-4" />}
-                  Grade with AI
+                <Button onClick={grade} disabled={isLoading} className="gap-2">
+                  {isLoading ? <Loader2 className="w-4 h-4 animate-spin" /> : <Mic className="w-4 h-4" />}
+                  {isLoading ? 'AI is grading...' : 'Grade with AI'}
                 </Button>
               )}
               {phase === 'recorded' && (
-                <Button variant="outline" onClick={() => { setPhase('idle'); setSeconds(0); setGraded(false) }} className="gap-2">
+                <Button variant="outline" onClick={() => { setPhase('idle'); setSeconds(0); setGraded(false); setIsLoading(false) }} className="gap-2">
                   <RotateCcw className="w-4 h-4" /> Re-record
                 </Button>
               )}

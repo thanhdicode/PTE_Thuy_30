@@ -91,7 +91,7 @@ export default function DemoAIWritingPage() {
             <CardContent>
               {!graded ? (
                 <div className="text-center text-muted-foreground py-12">
-                  Nhập bài viết và nhấn "Grade with AI" để xem demo phản hồi.
+                  Nhập bài viết và nhấn “Grade with AI” để xem demo phản hồi.
                 </div>
               ) : (
                 <Tabs defaultValue="scores" className="space-y-4">

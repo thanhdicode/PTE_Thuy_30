@@ -1,6 +1,6 @@
 'use client'
 
-import { useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState, useCallback } from 'react'
 import {
   Card,
   CardContent,
@@ -26,13 +26,13 @@ interface DemoQuestion {
 }
 
 const DEMO_QUESTIONS: DemoQuestion[] = [
-  { id: 's1', section: 'Speaking', type: 'Read Aloud', prompt: 'Read this passage aloud clearly and at a natural pace.\n\n"Climate change is one of the most pressing issues facing the world today. Governments and individuals must work together to reduce carbon emissions."', duration: 40 },
+  { id: 's1', section: 'Speaking', type: 'Read Aloud', prompt: 'Read this passage aloud clearly and at a natural pace.\n\n“Climate change is one of the most pressing issues facing the world today. Governments and individuals must work together to reduce carbon emissions.”', duration: 40 },
   { id: 's2', section: 'Speaking', type: 'Repeat Sentence', prompt: 'You will hear a sentence. Please repeat the sentence exactly as you hear it.', duration: 15 },
   { id: 's3', section: 'Speaking', type: 'Describe Image', prompt: 'Describe the image in detail. The chart shows monthly sales increasing from January to June.', duration: 40 },
-  { id: 'w1', section: 'Writing', type: 'Summarize Written Text', prompt: 'Summarize the following text in one sentence (5-75 words).\n\n"Renewable energy sources such as solar and wind are becoming cheaper and more reliable. Many countries are investing in clean energy to reduce pollution."', duration: 600 },
-  { id: 'w2', section: 'Writing', type: 'Write Essay', prompt: 'Write an essay (200-300 words) on the following topic:\n\n"Do the benefits of studying abroad outweigh the drawbacks?"', duration: 1200 },
+  { id: 'w1', section: 'Writing', type: 'Summarize Written Text', prompt: 'Summarize the following text in one sentence (5-75 words).\n\n“Renewable energy sources such as solar and wind are becoming cheaper and more reliable. Many countries are investing in clean energy to reduce pollution.”', duration: 600 },
+  { id: 'w2', section: 'Writing', type: 'Write Essay', prompt: 'Write an essay (200-300 words) on the following topic:\n\n“Do the benefits of studying abroad outweigh the drawbacks?”', duration: 1200 },
   { id: 'r1', section: 'Reading', type: 'Multiple Choice', prompt: 'Choose the correct answer.\n\nWhat is the main idea of the passage?', options: ['A. The history of the internet', 'B. The impact of social media', 'C. The future of AI', 'D. The economy'], duration: 120 },
-  { id: 'r2', section: 'Reading', type: 'Fill in the Blanks', prompt: 'Drag the correct word into each blank.\n\n"The company ___ (announced/annoyed) a new product ___ (launch/lunch) next month."', duration: 120 },
+  { id: 'r2', section: 'Reading', type: 'Fill in the Blanks', prompt: 'Drag the correct word into each blank.\n\n“The company ___ (announced/annoyed) a new product ___ (launch/lunch) next month.”', duration: 120 },
   { id: 'l1', section: 'Listening', type: 'Summarize Spoken Text', prompt: 'You will hear a short lecture. Summarize it in one sentence.', duration: 600 },
   { id: 'l2', section: 'Listening', type: 'Write from Dictation', prompt: 'Type the sentence you hear.', duration: 120 },
 ]
@@ -47,11 +47,21 @@ export default function DemoMockTestPage() {
   const [isFullscreen, setIsFullscreen] = useState(false)
   const timerRef = useRef<NodeJS.Timeout | null>(null)
 
-  const current = DEMO_QUESTIONS[index]
+  const handleNext = useCallback(() => {
+    setIndex((i) => {
+      if (i < DEMO_QUESTIONS.length - 1) {
+        return i + 1
+      }
+      setFinished(true)
+      return i
+    })
+  }, [])
 
   useEffect(() => {
     if (!started || finished) return
-    setTimeLeft(current.duration)
+    const duration = DEMO_QUESTIONS[index].duration
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setTimeLeft(duration)
     timerRef.current = setInterval(() => {
       setTimeLeft((prev) => {
         if (prev <= 1) {
@@ -86,15 +96,7 @@ export default function DemoMockTestPage() {
       document.removeEventListener('keydown', onKey)
       window.removeEventListener('beforeunload', onBeforeUnload)
     }
-  }, [started, finished, index])
-
-  const handleNext = () => {
-    if (index < DEMO_QUESTIONS.length - 1) {
-      setIndex((i) => i + 1)
-    } else {
-      setFinished(true)
-    }
-  }
+  }, [started, finished, index, handleNext])
 
   const start = () => {
     setStarted(true)
@@ -111,6 +113,8 @@ export default function DemoMockTestPage() {
     }
   }
 
+  const current = DEMO_QUESTIONS[index]
+
   const iconMap = {
     Speaking: Mic,
     Writing: PenTool,
@@ -120,6 +124,7 @@ export default function DemoMockTestPage() {
   const SectionIcon = iconMap[current.section]
 
   if (finished) {
+    const sectionScores = { Speaking: 70, Writing: 75, Reading: 73, Listening: 70 }
     return (
       <div className="min-h-screen bg-background flex items-center justify-center p-4">
         <Card className="w-full max-w-2xl">
@@ -142,7 +147,7 @@ export default function DemoMockTestPage() {
               {sections.map((s) => (
                 <div key={s} className="flex items-center justify-between text-sm">
                   <span>{s}</span>
-                  <span className="font-medium">{Math.round(60 + Math.random() * 25)}/90</span>
+                  <span className="font-medium">{sectionScores[s]}/90</span>
                 </div>
               ))}
             </div>

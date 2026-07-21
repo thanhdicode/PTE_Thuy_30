@@ -5,14 +5,14 @@ import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'
 import { Button } from '@/components/ui/button'
 import { Badge } from '@/components/ui/badge'
 import { Tabs, TabsContent, TabsList, TabsTrigger } from '@/components/ui/tabs'
-import { Mic, Headphones, BookOpen, PenTool } from 'lucide-react'
+import { Mic, Headphones, BookOpen, PenTool, ExternalLink } from 'lucide-react'
 
 const sections = [
   {
     id: 'all',
     label: 'All 20 tasks (PTE Simulator)',
     icon: BookOpen,
-    desc: 'Mô phỏng đầy đủ 20 dạng bài PTE Academic với ghi âm, đếm giờ và chấm điểm.',
+    desc: 'Mô phỏng đầy đủ 20 dạng bài PTE Academic với ghi âm, đếm giờ và chấm điểm. Mở trong tab mới để trải nghiệm đầy đủ vì CSP chặn iframe.',
   },
   {
     id: 'speaking',
@@ -74,12 +74,18 @@ export default function DemoPracticePage() {
                 </CardHeader>
                 <CardContent className="p-0">
                   {s.id === 'all' ? (
-                    <iframe
-                      src="/pte-simulator/index.html"
-                      className="w-full rounded-xl border"
-                      style={{ height: 'calc(100vh - 240px)' }}
-                      title="PTE Simulator"
-                    />
+                    <div className="rounded-xl border bg-muted/30 p-10 text-center max-w-2xl mx-auto">
+                      <p className="text-muted-foreground mb-6">
+                        PTE Simulator chạy standalone với đầy đủ 20 task types. Khi tích hợp production,
+                        sẽ dùng các components Read Aloud / Repeat Sentence / Describe Image / SST / WFD
+                        từ repo <code>pte-simulator</code> thay vì iframe.
+                      </p>
+                      <Button asChild className="gap-2">
+                        <a href="/pte-simulator/index.html" target="_blank" rel="noopener noreferrer">
+                          Open PTE Simulator <ExternalLink className="w-4 h-4" />
+                        </a>
+                      </Button>
+                    </div>
                   ) : (
                     <div className="rounded-xl border bg-muted/30 p-10 text-center">
                       <p className="text-muted-foreground mb-4">
