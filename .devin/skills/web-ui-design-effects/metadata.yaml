@@ -1,0 +1,8 @@
+# yaml-language-server: $schema=https://raw.githubusercontent.com/agents-inc/cli/main/src/schemas/metadata.schema.json
+category: web-ui-design
+slug: design-effects
+domain: web
+author: "@devin"
+displayName: Premium UI Design & Motion Effects
+cliDescription: Beautiful, non-generic web UI design patterns, animation effects, and copy-paste component sources.
+usageGuidance: Use when building or polishing landing pages, dashboards, or marketing sections to avoid AI-generic look and add premium motion/cursor/scroll effects.
