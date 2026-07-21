@@ -148,7 +148,9 @@ export async function verifyPayment({
       })
       .where(eq(paymentTransactions.orderId, orderId))
 
-    const durationDays = PAYMENT_TIER_CONFIG[transaction.tier]?.durationDays || 30
+    const durationDays =
+      PAYMENT_TIER_CONFIG[transaction.tier as keyof typeof PAYMENT_TIER_CONFIG]
+        ?.durationDays || 30
     const now = new Date()
     const endDate = new Date(now.getTime() + durationDays * 24 * 60 * 60 * 1000)
 
@@ -191,4 +193,10 @@ export async function verifyPayment({
   }
 }
 
-export { getBaseUrl, isPaymentConfigured, SUPPORTED_GATEWAYS, GATEWAY_LABELS }
+export {
+  getBaseUrl,
+  isPaymentConfigured,
+  SUPPORTED_GATEWAYS,
+  GATEWAY_LABELS,
+  type PaymentGateway,
+}

@@ -16,7 +16,14 @@ function getMasterKey(): Buffer {
 
 function getUserKey(userId: string): Buffer {
   const master = getMasterKey()
-  return crypto.hkdfSync('sha256', master, userId, 'audio-encryption', KEY_LENGTH)
+  const derived = crypto.hkdfSync(
+    'sha256',
+    master,
+    userId,
+    'audio-encryption',
+    KEY_LENGTH
+  )
+  return Buffer.from(derived).subarray(0, KEY_LENGTH)
 }
 
 export interface EncryptedAudio {

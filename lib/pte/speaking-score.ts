@@ -22,6 +22,8 @@ export interface SpeakingScoreResult {
     fillerRate?: number
     pauseCount?: number
     transcriberProvider?: string
+    provider?: string
+    providerRaw?: any
   }
 }
 

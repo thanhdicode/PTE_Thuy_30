@@ -61,8 +61,8 @@ async function getAnalytics(userId: string) {
     db
       .select({
         count: sql<number>`count(*)`.mapWith(Number),
-        avg: sql<number>`coalesce(avg(score), 0)`.mapWith(Number),
-        best: sql<number>`coalesce(max(score), 0)`.mapWith(Number),
+        avg: sql<number>`coalesce(avg(accuracy), 0)`.mapWith(Number),
+        best: sql<number>`coalesce(max(accuracy), 0)`.mapWith(Number),
       })
       .from(readingAttempts)
       .where(
@@ -74,8 +74,8 @@ async function getAnalytics(userId: string) {
     db
       .select({
         count: sql<number>`count(*)`.mapWith(Number),
-        avg: sql<number>`coalesce(avg(score), 0)`.mapWith(Number),
-        best: sql<number>`coalesce(max(score), 0)`.mapWith(Number),
+        avg: sql<number>`coalesce(avg(accuracy), 0)`.mapWith(Number),
+        best: sql<number>`coalesce(max(accuracy), 0)`.mapWith(Number),
       })
       .from(listeningAttempts)
       .where(
@@ -110,7 +110,9 @@ async function getAnalytics(userId: string) {
     db
       .select({
         type: sql<string>`'Reading'`,
-        score: readingAttempts.score,
+        score: sql<number>`coalesce(${readingAttempts.accuracy}, 0)`.mapWith(
+          Number
+        ),
         createdAt: readingAttempts.createdAt,
       })
       .from(readingAttempts)
@@ -120,7 +122,9 @@ async function getAnalytics(userId: string) {
     db
       .select({
         type: sql<string>`'Listening'`,
-        score: listeningAttempts.score,
+        score: sql<number>`coalesce(${listeningAttempts.accuracy}, 0)`.mapWith(
+          Number
+        ),
         createdAt: listeningAttempts.createdAt,
       })
       .from(listeningAttempts)

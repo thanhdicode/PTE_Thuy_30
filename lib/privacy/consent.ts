@@ -1,7 +1,9 @@
 import 'server-only'
+import { and, desc, eq, type InferSelectModel } from 'drizzle-orm'
 import { db } from '@/lib/db/drizzle'
-import { privacyConsent, type PrivacyConsent } from '@/lib/db/schema'
-import { and, desc, eq } from 'drizzle-orm'
+import { privacyConsent } from '@/lib/db/schema'
+
+type PrivacyConsent = InferSelectModel<typeof privacyConsent>
 
 export type ConsentPurpose = 'audio_recording' | 'analytics' | 'payment' | 'marketing'
 

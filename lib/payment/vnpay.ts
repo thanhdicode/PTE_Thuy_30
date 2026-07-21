@@ -1,4 +1,4 @@
-import { VNPay, VnpLocale, dateFormat } from 'vnpay'
+import { VNPay, VnpLocale, HashAlgorithm, dateFormat } from 'vnpay'
 import { getClientIp, normalizeAmount } from './utils'
 
 let vnpayClient: VNPay | null = null
@@ -18,7 +18,7 @@ export function getVNPayClient(): VNPay | null {
     secureSecret,
     vnpayHost: 'https://sandbox.vnpayment.vn',
     testMode: process.env.VNPAY_TEST_MODE !== 'false',
-    hashAlgorithm: 'SHA512',
+    hashAlgorithm: HashAlgorithm.SHA512,
     loggerFn: ignoreLogger,
   })
 
@@ -73,7 +73,7 @@ export function verifyVNPayReturn(query: Record<string, unknown>) {
   if (!client) {
     throw new Error('VNPay is not configured')
   }
-  return client.verifyReturnUrl(query)
+  return client.verifyReturnUrl(query as any)
 }
 
 export function verifyVNPayIpn(query: Record<string, unknown>) {
@@ -81,5 +81,5 @@ export function verifyVNPayIpn(query: Record<string, unknown>) {
   if (!client) {
     throw new Error('VNPay is not configured')
   }
-  return client.verifyIpnCall(query)
+  return client.verifyIpnCall(query as any)
 }

@@ -1,8 +1,10 @@
 import { NextRequest, NextResponse } from 'next/server'
 import { auth } from '@/lib/auth'
 import { headers } from 'next/headers'
-import { createPayment, type PaymentGateway } from '@/lib/payment'
+import { createPayment } from '@/lib/payment'
+import { type PaymentGateway, isPaymentConfigured } from '@/lib/payment/config'
 import { getClientIp } from '@/lib/payment/utils'
+import { SubscriptionTier } from '@/lib/subscription/tiers'
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,7 +17,7 @@ export async function POST(request: NextRequest) {
     }
 
     const body = await request.json()
-    const { tier, gateway } = body as { tier: 'pro' | 'premium'; gateway: PaymentGateway }
+    const { tier, gateway } = body as { tier: string; gateway: PaymentGateway }
 
     if (!tier || !['pro', 'premium'].includes(tier)) {
       return NextResponse.json(
@@ -24,21 +26,22 @@ export async function POST(request: NextRequest) {
       )
     }
 
-    if (!gateway) {
+    if (!gateway || !isPaymentConfigured(gateway)) {
       return NextResponse.json(
-        { error: 'Payment gateway is required' },
+        { error: 'Payment gateway is required or not configured' },
         { status: 400 }
       )
     }
 
-    const ipAddr =
-      request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
-      request.ip ||
-      '127.0.0.1'
+    const ipAddr = getClientIp({
+      headers: {
+        'x-forwarded-for': request.headers.get('x-forwarded-for') || undefined,
+      },
+    })
 
     const payment = await createPayment({
       userId: session.user.id,
-      tier,
+      tier: tier === 'premium' ? SubscriptionTier.PREMIUM : SubscriptionTier.PRO,
       gateway,
       ipAddr,
     })
