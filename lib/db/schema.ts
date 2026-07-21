@@ -1094,6 +1094,46 @@ export const paymentTransactions = pgTable(
   })
 )
 
+// Privacy / PDPL compliance
+export const privacyConsent = pgTable(
+  'privacy_consent',
+  {
+    id: uuid('id')
+      .primaryKey()
+      .default(sql`gen_random_uuid()`),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    purpose: text('purpose').notNull(), // e.g. 'audio_recording', 'analytics', 'payment'
+    granted: boolean('granted').notNull(),
+    ipAddress: text('ip_address'),
+    userAgent: text('user_agent'),
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+    updatedAt: timestamp('updated_at').defaultNow().notNull(),
+  },
+  (table) => ({
+    userIdIdx: index('idx_privacy_consent_user_id').on(table.userId),
+    purposeIdx: index('idx_privacy_consent_purpose').on(table.purpose),
+  })
+)
+
+export const audioEncryptionKeys = pgTable(
+  'audio_encryption_keys',
+  {
+    id: uuid('id')
+      .primaryKey()
+      .default(sql`gen_random_uuid()`),
+    userId: text('user_id')
+      .notNull()
+      .references(() => users.id, { onDelete: 'cascade' }),
+    keyFragment: text('key_fragment').notNull(), // encrypted DEK stored by KMS/master key in production
+    createdAt: timestamp('created_at').defaultNow().notNull(),
+  },
+  (table) => ({
+    userIdIdx: index('idx_audio_encryption_keys_user_id').on(table.userId),
+  })
+)
+
 // Relations
 // New relations for Speaking system
 export const speakingQuestionsRelations = relations(
@@ -1186,6 +1226,8 @@ export const usersRelations = relations(users, ({ one, many }) => ({
   profile: one(userProfiles),
   subscriptions: many(userSubscriptions),
   payments: many(paymentTransactions),
+  consentRecords: many(privacyConsent),
+  audioKeys: many(audioEncryptionKeys),
   testAttempts: many(testAttempts),
   posts: many(posts),
   comments: many(comments),
