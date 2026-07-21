@@ -7,21 +7,6 @@ export const metadata: Metadata = {
   description: "PTE Magic - Trung tâm luyện thi PTE Academic uy tín cho người Việt.",
 };
 
-const wpStyles = [
-  "/css/flatsome.css",
-  "/css/flatsome-shop.css",
-  "/css/style.css",
-  "/css/all.min.css",
-  "/css/animate.min.css",
-  "/css/swiper-bundle.min.css",
-  "/css/flexslider.css",
-  "/css/marquee.css",
-  "/css/owl.carousel.min.css",
-  "/css/owl.theme.default.min.css",
-  "/css/jquery.fancybox.min.css",
-  "/css/wpforms-full.min.css",
-];
-
 const lazyScript = `
 (function(){
   function fix(){
@@ -45,16 +30,20 @@ export default function RootLayout({
 }>) {
   const headerHtml = loadPartial("header");
   const footerHtml = loadPartial("footer");
+  const stylesHtml = loadPartial("styles");
+  const headScriptsHtml = loadPartial("head-scripts");
+  const scriptsHtml = loadPartial("scripts");
 
   return (
     <html lang="vi">
       <head>
-        {wpStyles.map((href) => (
-          <link key={href} rel="stylesheet" href={href} />
-        ))}
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <div style={{ display: "none" }} dangerouslySetInnerHTML={{ __html: headScriptsHtml }} />
         <script dangerouslySetInnerHTML={{ __html: lazyScript }} />
       </head>
       <body className="home page-template page page-id-9883 full-width light">
+        <div style={{ display: "none" }} dangerouslySetInnerHTML={{ __html: stylesHtml }} />
         <div
           className="site-header-wrapper"
           dangerouslySetInnerHTML={{ __html: headerHtml }}
@@ -64,6 +53,7 @@ export default function RootLayout({
           className="site-footer-wrapper"
           dangerouslySetInnerHTML={{ __html: footerHtml }}
         />
+        <div dangerouslySetInnerHTML={{ __html: scriptsHtml }} />
       </body>
     </html>
   );

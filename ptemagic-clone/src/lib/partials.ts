@@ -1,7 +1,7 @@
 import fs from "fs";
 import path from "path";
 
-export function loadPartial(name: "header" | "footer"): string {
+export function loadPartial(name: "header" | "footer" | "styles" | "scripts" | "head-scripts"): string {
   const filePath = path.join(process.cwd(), "public", "partials", `${name}.html`);
   const raw = fs.readFileSync(filePath, "utf-8");
   return preprocess(raw);

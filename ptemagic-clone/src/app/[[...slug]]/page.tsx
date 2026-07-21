@@ -43,8 +43,5 @@ function sanitizeWpContent(html: string): string {
       .replace(/<head[^>]*>[\s\S]*?<\/head>/gi, "")
       .replace(/<body[^>]*>/gi, "")
       .replace(/<\/body>/gi, "")
-      // make ptemagic URLs relative
-      .replace(/https?:\/\/(?:www\.)?ptemagic\.com\.vn\//g, "/")
-      .replace(/https?:\/\/(?:www\.)?ptemagic\.com\//g, "/")
   );
 }
