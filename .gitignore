@@ -1,0 +1,12 @@
+# graphify local cache/output
+graphify-out/
+
+# Node / Python env
+node_modules/
+__pycache__/
+.env
+.env.local
+
+# OS
+.DS_Store
+Thumbs.db
