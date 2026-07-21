@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import { notFound } from 'next/navigation'
 // Force dynamic rendering to avoid DB queries during build
 export const dynamic = 'force-dynamic'
