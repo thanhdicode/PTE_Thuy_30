@@ -1,0 +1,422 @@
+"Hãy đóng vai một chuyên gia CRO (Conversion Rate Optimization), direct response copywriter, UX writer và funnel strategist chuyên tối ưu checkout page cho digital products.
+
+Nhiệm vụ của bạn:
+Dựa trên cấu trúc sales page tôi cung cấp, hãy tạo ra một CHECKOUT PAGE có tỷ lệ hoàn tất thanh toán cao nhất cho sản phẩm digital như khóa học online, ebook hoặc bundle.
+Sau khi khách hàng chuyển sang trang check out này hãy đưa khách hàng lên đâu trang
+Mục tiêu chính:
+
+Giảm rơi đơn ở bước thanh toán
+Tăng tỷ lệ hoàn tất mua hàng
+Giảm do dự phút chót
+Tăng cảm giác tin tưởng, rõ ràng, cấp bách và an toàn
+Giữ thông điệp đồng nhất với sales page nhưng ngắn gọn, trực diện, thiên về “close” hơn là “educate”
+Yêu cầu chiến lược:
+
+Checkout page KHÔNG được viết như một sales page dài.
+Chỉ giữ lại những thông điệp có tác dụng chốt đơn:
+xác nhận quyết định mua
+nhắc lại lợi ích cốt lõi
+tóm tắt những gì khách sẽ nhận
+củng cố niềm tin
+xử lý objection cuối cùng
+tạo urgency/scarcity hợp lý
+làm rõ quy trình nhận sản phẩm sau thanh toán
+Giọng văn:
+rõ ràng
+thuyết phục
+đáng tin
+ít hype quá đà
+tập trung vào hành động hoàn tất thanh toán
+Tối ưu cho cả desktop và mobile.
+Phù hợp với sản phẩm thông tin số: online course, ebook, membership, template, toolkit hoặc bundle.
+Nếu có claim về kết quả, phải giữ wording an toàn, không hứa hẹn quá mức, không vi phạm chính sách quảng cáo.
+Viết nội dung theo phong cách hiện đại, sạch, premium, dễ scan.
+Ưu tiên chuyển đổi cao hơn là dài dòng.
+Hãy tạo output theo đúng cấu trúc dưới đây:
+
+PHẦN 1 — TÓM TẮT CHIẾN LƯỢC
+
+Giải thích ngắn gọn checkout page này được xây dựng theo logic gì
+Chỉ ra 5-10 yếu tố tâm lý chuyển đổi được sử dụng như:
+reassurance, urgency, clarity, trust, risk reversal, specificity, friction reduction, instant gratification, authority, value stacking
+PHẦN 2 — CUSTOMER JOURNEY MINDSET
+Mô tả ngắn trạng thái tâm lý của khách khi vừa từ sales page sang checkout:
+
+họ đã tin điều gì
+họ còn lo điều gì
+điều gì khiến họ bỏ giỏ ở bước cuối
+checkout page cần giải quyết điều gì để khách hoàn tất mua
+PHẦN 3 — CẤU TRÚC CHECKOUT PAGE TỐI ƯU CHUYỂN ĐỔI
+Hãy xây dựng full wireframe checkout page theo thứ tự section, mỗi section gồm:
+
+Tên section
+Mục tiêu chuyển đổi của section
+Nội dung nên có
+Gợi ý copywriting angle
+CTA nên đặt ở đâu
+Notes UX/CRO
+Bắt buộc phải bao gồm các section sau:
+
+Checkout hero / decision confirmation section
+Order summary section
+What you get today section
+Bonus stack section
+Why buy now / urgency section
+Trust & security reassurance section
+Objection handling section
+Short testimonials / buyer reassurance section
+FAQ before payment section
+Final checkout CTA section
+PHẦN 4 — VIẾT FULL COPY MẪU CHO CHECKOUT PAGE
+Viết toàn bộ nội dung mẫu hoàn chỉnh cho checkout page, dùng placeholder rõ ràng để tôi dễ thay thế.
+
+Dùng format với placeholder như:
+[PRODUCT NAME]
+[TARGET AUDIENCE]
+[MAIN BENEFIT]
+[PRICE]
+[REGULAR PRICE]
+[BONUS 1]
+[GUARANTEE DAYS]
+[PAYMENT METHOD]
+[DELIVERY METHOD]
+[SUPPORT EMAIL]
+v.v.
+
+Trong phần full copy mẫu, bắt buộc phải có:
+
+Headline chính ở checkout
+Subheadline
+Bullet lợi ích ngắn
+Tóm tắt đơn hàng
+Giá / discount / saving
+Nội dung “bạn sẽ nhận được gì ngay hôm nay”
+3-5 bullet giảm lo ngại khi thanh toán
+5 objection handling blocks
+3-5 testimonials ngắn đúng ngữ cảnh checkout
+FAQ mua hàng
+CTA button copy variants
+Gợi ý microcopy đặt cạnh form thanh toán
+PHẦN 5 — FORM CHECKOUT MICROCOPY
+Viết microcopy cụ thể cho từng thành phần trong form checkout:
+
+Email field
+Full name field
+Phone field (nếu cần)
+Coupon field
+Payment section
+Submit button
+Note dưới nút thanh toán
+Error prevention copy
+Trust badges copy
+“Instant access after purchase” copy
+“No hidden fees” copy
+“Secure checkout” copy
+Mỗi microcopy cần ngắn, rõ, giảm lo lắng và thúc đẩy hoàn tất.
+
+PHẦN 6 — BẢN CHECKOUT CHO 3 LOẠI OFFER
+Tạo 3 phiên bản checkout copy riêng:
+A. Dành cho khóa học online
+B. Dành cho ebook
+C. Dành cho bundle (khóa học + ebook + bonus)
+
+Mỗi phiên bản cần điều chỉnh:
+
+mức độ urgency
+cách mô tả giá trị
+cách xử lý objection
+cách diễn đạt quyền truy cập / nhận sản phẩm
+PHẦN 7 — 10 CTA BUTTON CONVERT CAO
+Hãy viết 10 CTA button ngắn, mạnh, phù hợp checkout cho digital product.
+Yêu cầu:
+
+không chung chung
+thiên về lợi ích hoặc hành động
+có cả bản mềm và bản mạnh
+PHẦN 8 — FAQ CHUẨN CHO CHECKOUT
+Viết 12 câu hỏi thường gặp nhất trước khi thanh toán cho sản phẩm số, tập trung vào:
+
+cách nhận sản phẩm
+thời gian truy cập
+hỗ trợ
+chính sách hoàn tiền
+cần kỹ năng trước không
+mua xong bắt đầu ở đâu
+thanh toán bảo mật không
+có học trên điện thoại không
+nếu không nhận email thì sao
+có được cập nhật không
+có tải xuống được không
+có phù hợp với người mới không
+PHẦN 9 — CRO & UX RULES
+Liệt kê checklist tối ưu chuyển đổi cho checkout page:
+
+những gì nên có
+những gì nên tránh
+lỗi thường làm giảm tỷ lệ thanh toán
+cách tối ưu cho mobile
+cách giảm friction
+cách tăng trust
+cách sắp xếp thứ tự thông tin
+PHẦN 10 — OUTPUT CUỐI CÙNG THEO 2 FORMAT
+Format A: bản nội dung đầy đủ để đưa cho copywriter/designer
+Format B: bản prompt ngắn gọn hơn để tôi có thể tiếp tục dùng cho AI khác
+
+Dưới đây là cấu trúc sales page gốc để bạn bám thông điệp và đồng bộ message:
+
+[PASTE TOÀN BỘ SALES PAGE STRUCTURE Ở ĐÂY]
+
+Ngoài ra, hãy tuân thủ các nguyên tắc chuyển đổi sau:
+
+checkout page phải ngắn hơn sales page rất nhiều
+ưu tiên clarity hơn creativity
+CTA xuất hiện sớm và lặp lại hợp lý
+mọi phần copy phải hướng tới hành động hoàn tất thanh toán
+không thêm section thừa gây xao nhãng
+hạn chế outbound links
+nếu có bảo hành/guarantee, làm nổi bật
+nếu không có guarantee, dùng trust/reassurance khác để bù
+nhấn mạnh instant access nếu đúng
+nêu rõ khách sẽ nhận gì ngay sau khi thanh toán
+giữ tính hợp pháp và an toàn trong ngôn từ
+Cuối cùng, sau khi hoàn thành, hãy thêm:
+
+“Phiên bản checkout tối giản nhất” dành cho sản phẩm giá thấp
+“Phiên bản checkout premium” dành cho offer giá cao
+“Phiên bản checkout mobile-first” dành cho traffic chủ yếu từ điện thoại
+sửa lại promt này: ko cần thêm form đăng ký vì khách hàng đã đăng lý từ trước rồi, chỉ cần thêm mã QR chuyển khoản vào
+
+
+View more
+2:23 PM
+
+GPT-5.4
+
+
+Prompt đã chỉnh sửa
+Hãy đóng vai một chuyên gia CRO (Conversion Rate Optimization), direct response copywriter, UX writer và funnel strategist chuyên tối ưu checkout page cho digital products.
+
+Nhiệm vụ của bạn
+Dựa trên cấu trúc sales page tôi cung cấp, hãy tạo ra một CHECKOUT PAGE có tỷ lệ hoàn tất thanh toán cao nhất cho sản phẩm digital như khóa học online, ebook hoặc bundle.
+
+Mục tiêu chính
+Giảm rơi đơn ở bước thanh toán
+Tăng tỷ lệ hoàn tất mua hàng
+Giảm do dự phút chót
+Tăng cảm giác tin tưởng, rõ ràng, cấp bách và an toàn
+Giữ thông điệp đồng nhất với sales page nhưng ngắn gọn, trực diện, thiên về “close” hơn là “educate”
+Điều chỉnh quan trọng
+Không cần thêm form đăng ký / form nhập thông tin dài, vì khách hàng đã đăng ký từ trước rồi
+Checkout page này chỉ tập trung chốt thanh toán
+Chỉ cần thêm khu vực mã QR chuyển khoản và hướng dẫn thanh toán rõ ràng
+Có thể có phần xác nhận thông tin đã đăng ký trước đó nếu cần, nhưng không biến thành form mới
+Ưu tiên flow thanh toán càng ít bước càng tốt
+Yêu cầu chiến lược
+Checkout page không được viết như một sales page dài
+Chỉ giữ lại những thông điệp có tác dụng chốt đơn:
+xác nhận quyết định mua
+nhắc lại lợi ích cốt lõi
+tóm tắt những gì khách sẽ nhận
+củng cố niềm tin
+xử lý objection cuối cùng
+tạo urgency/scarcity hợp lý
+làm rõ quy trình nhận sản phẩm sau thanh toán
+làm rõ cách quét QR và xác nhận thanh toán
+Giọng văn:
+rõ ràng
+thuyết phục
+đáng tin
+ít hype quá đà
+tập trung vào hành động hoàn tất thanh toán
+Tối ưu cho cả desktop và mobile
+Phù hợp với sản phẩm thông tin số: online course, ebook, membership, template, toolkit hoặc bundle
+Nếu có claim về kết quả, phải giữ wording an toàn, không hứa hẹn quá mức, không vi phạm chính sách quảng cáo
+Viết nội dung theo phong cách hiện đại, sạch, premium, dễ scan
+Ưu tiên chuyển đổi cao hơn là dài dòng
+Không thêm section thừa gây xao nhãng
+Không yêu cầu khách điền lại thông tin nếu không thực sự cần thiết
+Hãy tạo output theo đúng cấu trúc dưới đây
+PHẦN 1 — TÓM TẮT CHIẾN LƯỢC
+Giải thích ngắn gọn checkout page này được xây dựng theo logic gì
+Chỉ ra 5-10 yếu tố tâm lý chuyển đổi được sử dụng như:
+reassurance
+urgency
+clarity
+trust
+risk reversal
+specificity
+friction reduction
+instant gratification
+authority
+value stacking
+PHẦN 2 — CUSTOMER JOURNEY MINDSET
+Mô tả ngắn trạng thái tâm lý của khách khi vừa từ sales page sang checkout:
+
+họ đã tin điều gì
+họ còn lo điều gì
+điều gì khiến họ bỏ giỏ ở bước cuối
+checkout page cần giải quyết điều gì để khách hoàn tất mua
+PHẦN 3 — CẤU TRÚC CHECKOUT PAGE TỐI ƯU CHUYỂN ĐỔI
+Hãy xây dựng full wireframe checkout page theo thứ tự section, mỗi section gồm:
+
+Tên section
+Mục tiêu chuyển đổi của section
+Nội dung nên có
+Gợi ý copywriting angle
+CTA nên đặt ở đâu
+Notes UX/CRO
+Lưu ý quan trọng:
+Vì khách đã đăng ký từ trước, nên không cần section form checkout truyền thống. Thay vào đó, hãy tối ưu flow theo hướng:
+
+xác nhận đơn hàng
+hiển thị giá và ưu đãi
+hiển thị mã QR chuyển khoản
+hướng dẫn thanh toán
+hướng dẫn sau thanh toán
+reassurance + objection handling
+Bắt buộc phải bao gồm các section sau:
+
+Checkout hero / decision confirmation section
+Order summary section
+What you get today section
+Bonus stack section
+Payment instruction + QR transfer section
+Why buy now / urgency section
+Trust & security reassurance section
+Objection handling section
+Short testimonials / buyer reassurance section
+FAQ before payment section
+Final payment CTA / confirmation section
+PHẦN 4 — VIẾT FULL COPY MẪU CHO CHECKOUT PAGE
+Viết toàn bộ nội dung mẫu hoàn chỉnh cho checkout page, dùng placeholder rõ ràng để tôi dễ thay thế.
+
+Dùng format với placeholder như:
+
+[PRODUCT NAME]
+[TARGET AUDIENCE]
+[MAIN BENEFIT]
+[PRICE]
+[REGULAR PRICE]
+[DISCOUNT DEADLINE]
+[BONUS 1]
+[BONUS 2]
+[GUARANTEE DAYS]
+[BANK NAME]
+[ACCOUNT NAME]
+[ACCOUNT NUMBER]
+[TRANSFER AMOUNT]
+[TRANSFER CONTENT]
+[QR CODE]
+[DELIVERY METHOD]
+[ACCESS TIME]
+[SUPPORT EMAIL]
+[SUPPORT CHANNEL]
+Trong phần full copy mẫu, bắt buộc phải có:
+
+Headline chính ở checkout
+Subheadline
+Bullet lợi ích ngắn
+Tóm tắt đơn hàng
+Giá / discount / saving
+Nội dung “bạn sẽ nhận được gì ngay hôm nay”
+Khu vực mã QR chuyển khoản
+Hướng dẫn chuyển khoản từng bước
+Nội dung xác nhận sau khi thanh toán
+3-5 bullet giảm lo ngại khi thanh toán
+5 objection handling blocks
+3-5 testimonials ngắn đúng ngữ cảnh checkout
+FAQ mua hàng
+CTA button copy variants
+Gợi ý microcopy đặt cạnh khu vực thanh toán QR
+PHẦN 5 — PAYMENT / QR MICROCOPY
+Viết microcopy cụ thể cho từng thành phần liên quan đến thanh toán bằng QR:
+
+Tiêu đề khu vực thanh toán
+Dòng hướng dẫn quét QR
+Copy dưới mã QR
+Copy cho số tiền chuyển khoản
+Copy cho nội dung chuyển khoản
+Copy cho nút “đã thanh toán”
+Copy cho nút “sao chép số tài khoản”
+Copy cho nút “sao chép nội dung chuyển khoản”
+Note sau khi chuyển khoản
+Error prevention copy
+Trust badges copy
+“Instant access after purchase” copy
+“No hidden fees” copy
+“Secure payment” copy
+Mỗi microcopy cần ngắn, rõ, giảm lo lắng và thúc đẩy hoàn tất.
+
+PHẦN 6 — BẢN CHECKOUT CHO 3 LOẠI OFFER
+Tạo 3 phiên bản checkout copy riêng:
+A. Dành cho khóa học online
+B. Dành cho ebook
+C. Dành cho bundle (khóa học + ebook + bonus)
+
+Mỗi phiên bản cần điều chỉnh:
+
+mức độ urgency
+cách mô tả giá trị
+cách xử lý objection
+cách diễn đạt quyền truy cập / nhận sản phẩm
+cách hướng dẫn thanh toán QR phù hợp từng loại offer
+PHẦN 7 — 10 CTA BUTTON CONVERT CAO
+Hãy viết 10 CTA button ngắn, mạnh, phù hợp checkout cho digital product.
+Yêu cầu:
+
+không chung chung
+thiên về lợi ích hoặc hành động
+có cả bản mềm và bản mạnh
+phù hợp với hành vi quét QR / xác nhận đã thanh toán
+PHẦN 8 — FAQ CHUẨN CHO CHECKOUT
+Viết 12 câu hỏi thường gặp nhất trước khi thanh toán cho sản phẩm số, tập trung vào:
+
+cách thanh toán bằng QR
+sau khi chuyển khoản bao lâu sẽ nhận được sản phẩm
+cách nhận sản phẩm
+thời gian truy cập
+hỗ trợ
+chính sách hoàn tiền
+cần kỹ năng trước không
+mua xong bắt đầu ở đâu
+thanh toán có an toàn không
+có học trên điện thoại không
+nếu không nhận email thì sao
+có được cập nhật không
+có tải xuống được không
+có phù hợp với người mới không
+PHẦN 9 — CRO & UX RULES
+Liệt kê checklist tối ưu chuyển đổi cho checkout page:
+
+những gì nên có
+những gì nên tránh
+lỗi thường làm giảm tỷ lệ thanh toán
+cách tối ưu cho mobile
+cách giảm friction
+cách tăng trust
+cách sắp xếp thứ tự thông tin
+cách tối ưu khu vực QR để dễ quét, dễ hiểu, dễ hoàn tất
+PHẦN 10 — OUTPUT CUỐI CÙNG THEO 2 FORMAT
+Format A: bản nội dung đầy đủ để đưa cho copywriter/designer
+Format B: bản prompt ngắn gọn hơn để tôi có thể tiếp tục dùng cho AI khác
+
+Dữ liệu đầu vào để bám message
+Dưới đây là cấu trúc sales page gốc để bạn bám thông điệp và đồng bộ message:
+
+[PASTE TOÀN BỘ SALES PAGE STRUCTURE Ở ĐÂY]
+
+Ngoài ra, hãy tuân thủ các nguyên tắc chuyển đổi sau
+checkout page phải ngắn hơn sales page rất nhiều
+ưu tiên clarity hơn creativity
+CTA xuất hiện sớm và lặp lại hợp lý
+mọi phần copy phải hướng tới hành động hoàn tất thanh toán
+không thêm section thừa gây xao nhãng
+hạn chế outbound links
+nếu có bảo hành/guarantee, làm nổi bật
+nếu không có guarantee, dùng trust/reassurance khác để bù
+nhấn mạnh instant access nếu đúng
+nêu rõ khách sẽ nhận gì ngay sau khi thanh toán
+giữ tính hợp pháp và an toàn trong ngôn từ
+không yêu cầu khách nhập lại thông tin đã có
+ưu tiên trải nghiệm thanh toán 1 bước bằng QR
+hướng dẫn thanh toán phải cực kỳ rõ ràng, tối giản, dễ làm theo trên mobile"	

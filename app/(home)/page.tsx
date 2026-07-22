@@ -1,29 +1,33 @@
-import { HeroSection } from "@/components/hero-section-demo-1";
-import Features from "@/components/home/Features";
-import HowItWorks from "@/components/home/HowItWorks";
-import Stats from "@/components/home/Stats";
-import TrustSection from "@/components/home/TrustSection";
-import Testimonials from "@/components/home/Testimonials";
-import PricingPreview from "@/components/home/PricingPreview";
-import BlogVideoCard from "@/components/home/BlogVideoCard";
-import FAQ from "@/components/home/FAQ";
-import CTA from "@/components/home/CTA";
-import Footer from "@/components/home/Footer";
+"use client";
+
+import React from "react";
+import { LanguageProvider } from "@/lib/language-context";
+import { HomeNavbar } from "@/components/home/home-navbar";
+import { HeroSection } from "@/components/home/hero-section";
+import { FeaturesGrid } from "@/components/home/features-grid";
+import { TestimonialsMarquee } from "@/components/home/testimonials-marquee";
+import { ScoreReportsCarousel } from "@/components/home/score-reports-carousel";
+import { FreeResources } from "@/components/home/free-resources";
+import { InstructorsSection } from "@/components/home/instructors-section";
+import { FaqAccordion } from "@/components/home/faq-accordion";
+import { HomeFooter } from "@/components/home/home-footer";
 
 export default function HomePage() {
   return (
-    <div className="bg-background text-foreground">
-      <HeroSection />
-      <Features />
-      <HowItWorks />
-      <Stats />
-      <TrustSection />
-      <Testimonials />
-      <PricingPreview />
-      <BlogVideoCard />
-      <FAQ />
-      <CTA />
-      <Footer />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-[100dvh] bg-white text-gray-900 font-sans selection:bg-rose-100 selection:text-rose-900">
+        <HomeNavbar />
+        <main>
+          <HeroSection />
+          <FeaturesGrid />
+          <TestimonialsMarquee />
+          <ScoreReportsCarousel />
+          <FreeResources />
+          <InstructorsSection />
+          <FaqAccordion />
+        </main>
+        <HomeFooter />
+      </div>
+    </LanguageProvider>
   );
 }

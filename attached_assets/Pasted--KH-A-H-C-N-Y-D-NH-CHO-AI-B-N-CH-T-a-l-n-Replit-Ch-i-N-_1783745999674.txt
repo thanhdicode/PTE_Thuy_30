@@ -1,0 +1,108 @@
+"KHÓA HỌC NÀY DÀNH CHO AI?" · BẢN CHỐT (đưa lên Replit)
+
+Chỉ đổi NỘI DUNG — GIỮ NGUYÊN màu sắc & design hiện tại
+
+
+PHẦN A — NỘI DUNG CHỐT
+
+1. Phần đầu section (giữ badge + headline, thay dòng sub)
+
+Badge (giữ nguyên): ● ĐỐI TƯỢNG PHÙ HỢP
+Headline (giữ nguyên): Khóa học này dành cho ai?
+
+Sub MỚI (thay 2 dòng cũ):
+
+Hầu hết học viên của cô Thuỷ bắt đầu từ một trong 4 tình huống này.
+Nếu bạn thấy mình ở đây — khoá đồng hành 30 ngày được thiết kế riêng cho bạn.
+
+2. Card 1 — MẤT GỐC TIẾNG ANH → GIỮ NGUYÊN 100%
+
+2. Card 2 — CẦN ĐIỂM GẤP → GIỮ NGUYÊN 100%
+
+4. Card 4 — MÔNG LUNG PHƯƠNG PHÁP → GIỮ NGUYÊN 100%
+
+3. Card 3 — ĐIỂM GIẬM CHÂN TẠI CHỖ → THAY MÔ TẢ + THÊM TAG
+
+Badge & tiêu đề (giữ nguyên): ĐIỂM GIẬM CHÂN TẠI CHỖ / "Điểm số chưa bứt phá"
+
+Mô tả MỚI (thay đoạn cũ):
+
+Đã tự học, học nhiều nơi — thậm chí đã thi 1–2 lần nhưng vẫn thiếu 
+vài điểm. Bạn cần biết chính xác mình mất điểm ở đâu để lần thi tới 
+là lần cuối.
+
+(In đậm: "đã thi 1–2 lần" và "lần thi tới là lần cuối")
+
+Hashtags MỚI (thay tag giữa):
+
+# Điểm chững    # Thi lại    # Cần chiến lược
+
+(Cũ: "# Chưa đạt mục tiêu" → Mới: "# Thi lại")
+
+5. Dòng kết — NÂNG THÀNH NÚT
+
+Xoá: dòng text link nhỏ "Bạn thấy mình trong những trường hợp trên? Xem lộ trình 30 ngày →"
+
+Thay bằng:
+
+Dù bạn ở tình huống nào — lộ trình 30 ngày đều được thiết kế cho bạn.
+
+[NÚT HỒNG]  Xem lộ trình 30 ngày →
+
+(Nút style giống nút hồng ở hero, scroll xuống section Lộ trình khi bấm)
+
+⚠️ KHÔNG ĐỔI
+
+
+Toàn bộ màu badge 4 card (hồng/vàng/cam/cyan) — giữ nguyên
+Icons minh hoạ trong card — giữ nguyên
+Layout 2x2 — giữ nguyên
+
+
+
+
+PHẦN B — PROMPT DÁN VÀO REPLIT AGENT
+
+Update ONLY the "Khóa học này dành cho ai?" section (the 4 persona cards section) of the landing page. Do NOT touch any other section. Do NOT change any colors, badge colors, icons, card layout or design — this is a CONTENT-ONLY update. All Vietnamese text must be copied EXACTLY as provided, preserving every diacritic.
+
+CHANGE 1 — Subtitle under the headline:
+Replace the current 2-line subtitle with:
+"Hầu hết học viên của cô Thuỷ bắt đầu từ một trong 4 tình huống này.
+Nếu bạn thấy mình ở đây — khoá đồng hành 30 ngày được thiết kế riêng cho bạn."
+
+CHANGE 2 — Card 3 ("ĐIỂM GIẬM CHÂN TẠI CHỖ" / "Điểm số chưa bứt phá"):
+Keep the badge, title, icon and colors unchanged.
+Replace the description paragraph with:
+"Đã tự học, học nhiều nơi — thậm chí đã thi 1–2 lần nhưng vẫn thiếu vài điểm. Bạn cần biết chính xác mình mất điểm ở đâu để lần thi tới là lần cuối."
+Bold these phrases: "đã thi 1–2 lần" and "lần thi tới là lần cuối".
+Replace the middle hashtag "# Chưa đạt mục tiêu" with "# Thi lại", so the tags read:
+"# Điểm chững   # Thi lại   # Cần chiến lược"
+
+CHANGE 3 — Closing line at the bottom of the section:
+Delete the small text link "Bạn thấy mình trong những trường hợp trên? Xem lộ trình 30 ngày →".
+Replace with, centered:
+- One line of text: "Dù bạn ở tình huống nào — lộ trình 30 ngày đều được thiết kế cho bạn."
+- Below it, a real pink pill BUTTON (same style as the hero primary button): "Xem lộ trình 30 ngày →" that smooth-scrolls to the "Lộ trình 30 Ngày" section when clicked.
+
+DO NOT CHANGE:
+- Cards 1, 2 and 4 (keep 100% as-is)
+- Any badge colors, borders, icons, or the 2x2 grid layout
+- Card 3's badge color, title and icon
+
+FINAL CHECKS:
+- Card 3 tags include "# Thi lại"
+- The bottom of the section now has a real button, not a text link
+- Mobile 375px: cards stack 1 column, button full-width tappable
+- When done, list exactly what you changed
+
+
+PHẦN C — CHECKLIST NGHIỆM THU
+
+
+ Sub mới: "Hầu hết học viên của cô Thuỷ bắt đầu từ một trong 4 tình huống này..."
+ Card 3: có "đã thi 1–2 lần" (đậm) và "lần thi tới là lần cuối" (đậm)
+ Card 3 tags: # Điểm chững · # Thi lại · # Cần chiến lược
+ Card 1, 2, 4: không bị đụng chữ nào
+ Cuối section: 1 dòng dẫn + NÚT hồng thật (không còn text link nhỏ)
+ Bấm nút → cuộn xuống section Lộ trình
+ Màu sắc toàn section: y nguyên như trước

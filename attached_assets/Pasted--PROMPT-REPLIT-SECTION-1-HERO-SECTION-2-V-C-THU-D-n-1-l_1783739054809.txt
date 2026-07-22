@@ -1,0 +1,164 @@
+# 🤖 PROMPT REPLIT — SECTION 1 (HERO) + SECTION 2 (VỀ CÔ THUỶ)
+## Dán 1 lần, Agent làm cả 2 section
+
+**Cách dùng:** Copy toàn bộ khối trong dấu ``` bên dưới → dán vào Replit Agent → chờ xong → kiểm tra theo checklist cuối file.
+
+---
+
+```
+Update ONLY two sections of the Vietnamese PTE landing page: the HERO section (Section 1) and the "Về Cô Thuỷ" section (Section 2). Do NOT touch any other section. Keep the existing dark purple/navy theme, fonts, card styles and 2-column layouts. All Vietnamese text must be copied EXACTLY as provided, preserving every diacritic.
+
+=====================================================
+GLOBAL COLOR SYSTEM (apply to both sections)
+=====================================================
+Only 2 accent colors allowed:
+- PINK (#D4537E for buttons, #ED93B1 for text): CTA button, the word "PTE" in headlines, icons, action emphasis
+- GOLD (#FAC775): value/achievement items ONLY — the Speaking 90/90 badge, the gift line, the 4.9 star, the 79+ badge, the gold bullet in Section 2
+- Everything else: WHITE for bold keywords, GRAY (#a99cc0) for regular text
+- REMOVE all cyan, mint, purple and green accent colors from these two sections
+- Site-wide replace: every occurrence of "chứng chỉ PTE" becomes "mục tiêu PTE"
+
+=====================================================
+PART 1 — HERO SECTION
+=====================================================
+
+--- LEFT COLUMN, top to bottom ---
+
+1. Top badges row:
+"🚀 KHOÁ ĐỒNG HÀNH" (pink letters) + outlined pill "🎥 Học qua video + Zoom hàng tuần" (gray text, subtle border)
+
+2. Headline (keep current large typography):
+"30 NGÀY" then pink underline bar, then "CHINH PHỤC MỤC TIÊU PTE" with only the word "PTE" in pink.
+
+3. Score journey — REPLACE the current separate colored badges with a horizontal journey of 6 pills connected by small "›" chevrons (muted purple #6e3a52):
+[XUẤT PHÁT / CON SỐ 0] › [24+ / BEGINNER] › [36+ / ELEMENTARY] › [50+ / INTERMEDIATE] › [65+ / UPPER-INT] › [79+ / ADVANCED]
+- First pill (CON SỐ 0): pink text, subtle pink-tinted background — it moves from the END of the row to the START
+- Middle 4 pills (24+, 36+, 50+, 65+): WHITE numbers, gray labels, identical subtle purple borders (no rainbow colors)
+- Last pill (79+): GOLD number, dark gold-tinted background
+- On mobile the journey wraps to 2 rows, chevrons preserved
+
+4. Subheadline (left pink border bar, replaces the current 2-line paragraph):
+"Từ mất gốc đến tự tin chinh phục mục tiêu PTE — cho visa · định cư · du học · tốt nghiệp."
+
+5. Learning-method lines (replace the current "Học qua video..." line with these 2 lines):
+Line 1: "🎥 Học qua video theo lộ trình mỗi ngày · 📞 1 buổi Zoom/tuần cùng cô Thuỷ · ✍️ Chữa bài 1-1" (icons pink, bold keywords white)
+Line 2: "📅 Học 30 ngày — truy cập trọn 100 ngày. Xem lại không giới hạn, ôn đến tận ngày thi." (the bold part white, rest gray)
+
+6. Primary CTA (keep current pink pill button):
+"⚡ Đăng Ký Ngay – 5.999.000đ →"
+Next to it: "Giá gốc 10.500.000đ" (strikethrough) and below it "Tiết kiệm 4.501.000đ (43%)" in gray (NOT green)
+
+7. Gift line in GOLD directly under the CTA row:
+"🎁 Đăng ký trong tháng 7 — tặng quyền truy cập web chữa bộ tủ PTE Talents (trị giá 500.000đ)"
+REMOVE any "Ưu đãi giới hạn", countdown, or slot-scarcity text from the hero.
+
+8. Secondary button (outlined pill): "▶ Xem lộ trình 30 ngày"
+
+9. Trust bar under the buttons, separated by a thin top border:
+"500+ học viên · ⭐ 4.9 đánh giá · Hỗ trợ 24/7 qua Zalo" (only the star is gold; numbers white bold; rest gray)
+
+--- RIGHT COLUMN: instructor profile card ---
+
+Top row: left label "GIẢNG VIÊN" (pink, letter-spaced) — DELETE the text "PTE_TALENTS.PROFILE". Right: keep the target chip "🎯 24+ → 79+".
+
+Keep the instructor photo (white blazer) unchanged.
+
+Name block: "Cô Nguyễn Thị Thuỷ" / "Chuyên gia PTE Talents"
+
+NEW gold badge directly under the name (dark gold-tinted background, thin gold border):
+small label "🏆 PTE SPEAKING" and big number "90/90"
+Do NOT add the words "Điểm tuyệt đối".
+
+Stats row: keep the 3 boxes but remove colored icons — white numbers, gray labels:
+"10 NĂM / GIẢNG DẠY" · "4 NĂM / PTE" · "500+ / HỌC VIÊN"
+
+Quote block: DELETE the label "● QUOTE.EXE". Show a large pink opening quotation mark, then the NEW quote in italic/serif:
+"Bạn không thiếu cố gắng — bạn chỉ thiếu lộ trình đúng."
+attribution right-aligned: "— Cô Thuỷ"
+(This REPLACES the old quote "Hiểu đúng là chìa khoá để chinh phục điểm PTE thật nhanh.")
+
+DELETE the two progress bars "Speaking & Writing 92%" and "Reading & Listening 88%" entirely.
+
+Card footer — REPLACE the old row "KẾT QUẢ: Chỉ 30 ngày ... 30 NGÀY/KHOÁ" with two equal side-by-side boxes:
+Box 1: label "LỘ TRÌNH" (gray) / value "30 ngày" (white bold)
+Box 2: label "TRUY CẬP" (gray) / value "100 ngày" (white bold)
+
+=====================================================
+PART 2 — "VỀ CÔ THUỶ" SECTION
+=====================================================
+GOAL: remove ALL information duplicated from the Hero. The Hero now owns: the name card, the Speaking 90/90 badge, the stats 10 NĂM / 4 NĂM / 500+, and the quote. Section 2 must contain NONE of those as badges, numbers or quote blocks.
+
+--- LEFT CARD ---
+Keep only:
+- The instructor photo (the black-blazer photo currently used in this section — different from the hero photo)
+- Pill badge: "🎓 Đại Học Hà Nội"
+- Pill badge: "📖 Chuyên ngành Ngôn Ngữ Anh"
+- Small italic line: "(Tiền thân Đại Học Ngoại Ngữ Hà Nội)"
+
+DELETE from this card:
+- The name "Nguyễn Thị Thuỷ" and title "Giáo viên & Chuyên gia PTE Talents" (the big headline next to it already has the name)
+- The stat grid (10+ / 4+ / 500+ / 4 kỹ năng)
+- The quote block "Hiểu đúng là chìa khoá để chinh phục điểm PTE thật nhanh."
+
+--- RIGHT COLUMN ---
+Keep the current headline style:
+"— GIÁO VIÊN & CHUYÊN GIA PTE —" then "CÔ" then large "NGUYỄN THUỶ" (THUỶ in pink) with pink underline bar.
+
+REPLACE the current 3 bullet paragraphs with these 4. Diamond bullet ◆ before each; bullets 1, 3, 4 use pink ◆; bullet 2 uses GOLD ◆ (#FAC775):
+
+Bullet 1 (pink):
+"Sau nhiều năm đứng lớp, điều cô Thuỷ nhận ra: phần lớn học viên chưa đạt mục tiêu không phải vì thiếu cố gắng — mà vì chưa có lộ trình học đúng và phương pháp luyện tập hiệu quả."
+Bold white: "không phải vì thiếu cố gắng". Bold pink: "lộ trình học đúng", "phương pháp luyện tập hiệu quả".
+
+Bullet 2 (gold):
+"Giai đoạn 1 của khoá học chính là phương pháp phát âm và độ trôi chảy chuẩn mà cô đã kiểm chứng trong kỳ thi thật."
+Bold gold: "phương pháp phát âm và độ trôi chảy chuẩn". Do NOT include the number 90/90 anywhere in this paragraph.
+
+Bullet 3 (pink):
+"Từ trải nghiệm đồng hành cùng học viên ở đủ mọi trình độ, cô xây dựng hệ thống học PTE Talents — lộ trình rõ ràng, video bài giảng, website luyện tập, bộ đề trọng điểm và quá trình chữa bài chi tiết."
+Bold white: "PTE Talents". Bold pink: "chữa bài chi tiết".
+
+Bullet 4 (pink):
+"Cô không dạy chỉ để học viên đạt điểm — mà để các em hiểu cách Pearson chấm điểm, có phương pháp bền vững và tự cải thiện được cả sau khoá học."
+Bold white: "hiểu cách Pearson chấm điểm", "phương pháp bền vững". Bold pink: "tự cải thiện được cả sau khoá học".
+
+--- DELETE ENTIRELY ---
+The bottom row of 4 credential cards in this section ("Đại Học Hà Nội / Chuyên ngành Ngôn Ngữ Anh", "10 Năm / Kinh nghiệm giảng dạy", "4 Năm / Chuyên luyện thi PTE", "Tận tâm / Đồng hành sát sao"). Remove the whole row.
+
+=====================================================
+FINAL CHECKS (run before finishing)
+=====================================================
+- Search both sections: no "chứng chỉ" remains (must be "mục tiêu")
+- Hero: no countdown, no slot scarcity, no 92%/88% progress bars, no "PTE_TALENTS.PROFILE", no "QUOTE.EXE"
+- Hero score journey: CON SỐ 0 first, 36+ present, 79+ gold, chevrons between pills
+- Section 2 contains NO "90/90", NO "500+", NO stat badges, NO quote block
+- Mobile 375px: hero journey wraps to 2 rows; both sections stack cleanly; CTA full-width
+- When done, list every change and deletion you made so I can verify
+```
+
+---
+
+# ✅ CHECKLIST NGHIỆM THU (sau khi Agent chạy xong)
+
+## Section 1 — Hero
+- [ ] Dãy điểm: CON SỐ 0 đứng ĐẦU → 24+ → 36+ → 50+ → 65+ → 79+ (vàng), có mũi tên ›
+- [ ] 4 mức giữa màu trắng đồng nhất (không cầu vồng)
+- [ ] Dòng "📞 1 buổi Zoom/tuần cùng cô Thuỷ" hiển thị
+- [ ] Dòng "Học 30 ngày — truy cập trọn 100 ngày" hiển thị
+- [ ] Dòng quà vàng: web chữa bộ tủ PTE Talents 500k, tháng 7 (KHÔNG có APEUni)
+- [ ] Không còn "Ưu đãi giới hạn" / slot / countdown
+- [ ] Card: badge vàng PTE SPEAKING 90/90 (không có chữ "Điểm tuyệt đối")
+- [ ] Card: quote mới "Bạn không thiếu cố gắng — bạn chỉ thiếu lộ trình đúng." + "— Cô Thuỷ"
+- [ ] Card: không còn 2 thanh 92%/88%, không còn "PTE_TALENTS.PROFILE" / "QUOTE.EXE"
+- [ ] Chân card: LỘ TRÌNH 30 ngày | TRUY CẬP 100 ngày
+- [ ] Ctrl+F: không còn chữ "chứng chỉ"
+
+## Section 2 — Về Cô Thuỷ
+- [ ] Card trái: chỉ ảnh áo đen + 2 badge học vấn + dòng tiền thân (không tên, không stats, không quote)
+- [ ] Đúng 4 đoạn ◆, đoạn 2 bullet VÀNG với câu: "Giai đoạn 1 của khoá học chính là phương pháp phát âm và độ trôi chảy chuẩn mà cô đã kiểm chứng trong kỳ thi thật."
+- [ ] Ctrl+F trong section: không còn "90/90", "500+"
+- [ ] Hàng 4 card cuối section đã xoá hẳn
+- [ ] Mobile: ảnh trên, chữ dưới, dãy badge hero xuống 2 hàng đẹp
+
+## Mẹo nếu Agent làm sai
+Chỉ nhắn: "Fix only [tên phần sai] exactly as specified in my previous prompt. Keep everything else unchanged."
