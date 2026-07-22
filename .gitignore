@@ -65,3 +65,13 @@ graphify-out/
 
 # local research
 .skills-research/
+
+# PTEMagic audit raw artifacts (clone deliverables live in ptemagic-clone/)
+docs/reference-audit/ptemagic/crawl.md
+docs/reference-audit/ptemagic/crawl.json
+docs/reference-audit/ptemagic/snapshot.json
+docs/reference-audit/ptemagic/route_inventory_*.json
+docs/reference-audit/ptemagic/css/
+docs/reference-audit/ptemagic/wp-export/
+docs/reference-audit/ptemagic/*.py
+docs/reference-audit/ptemagic/*.html

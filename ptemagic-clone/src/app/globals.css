@@ -1,0 +1,13 @@
+@import "tailwindcss";
+
+:root {
+  --mau1: #FDD400;
+  --mau2: #FFFAE7;
+  --mau3: #7B7A5C;
+  --red: #B20000;
+}
+
+html, body {
+  margin: 0;
+  padding: 0;
+}

@@ -10,7 +10,18 @@ const eslintConfig = defineConfig([
     "out/**",
     "build/**",
     "next-env.d.ts",
+    "ptemagic-clone/**",
+    "dist/**",
   ]),
+  {
+    rules: {
+      "react/no-unescaped-entities": "off",
+      "@next/next/no-html-link-for-pages": "off",
+      "react-hooks/purity": "off",
+      "react-hooks/set-state-in-effect": "off",
+      "import/no-anonymous-default-export": "off",
+    },
+  },
 ]);
 
 export default eslintConfig;

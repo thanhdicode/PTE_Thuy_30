@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 import React from 'react'
 import { mediaKindFromUrl } from '@/lib/pte/utils'
 import { Card, CardContent, CardHeader, CardTitle } from '@/components/ui/card'

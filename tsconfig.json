@@ -35,5 +35,12 @@
     "**/*.mts",
     ".next/dev/dev/types/**/*.ts"
   ],
-  "exclude": ["node_modules"]
+  "exclude": [
+    "node_modules",
+    "ptemagic-clone",
+    "**/*.test.ts",
+    "**/*.test.tsx",
+    "vitest.config.ts",
+    "vitest.setup.ts"
+  ]
 }

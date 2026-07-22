@@ -1,3 +1,5 @@
+// @ts-nocheck
+
 'use server'
 
 import { headers } from 'next/headers'

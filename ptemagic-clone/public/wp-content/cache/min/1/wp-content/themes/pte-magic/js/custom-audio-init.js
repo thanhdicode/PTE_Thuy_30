@@ -1,0 +1,2 @@
+document.addEventListener('DOMContentLoaded',function(){function initCustomAudioPlayers(){document.querySelectorAll('.custom-audio-block').forEach(function(block){if(!block.hasAttribute('data-initialized')){block.setAttribute('data-initialized','true');block.addEventListener('click',function(e){console.log("click");e.preventDefault();var audio=this.querySelector('audio');if(audio){audio.currentTime=0;audio.play()}})}})}
+initCustomAudioPlayers();if(typeof wp!=='undefined'&&wp.hooks){wp.hooks.addAction('contentUpdated','customAudio',initCustomAudioPlayers)}})
